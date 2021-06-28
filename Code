@@ -1,0 +1,90 @@
+#include <Servo.h>
+int servoPin1=13;
+int servoPin2=12;
+int servoPin3=11;
+int servoPin4=8;
+void setup()
+{
+  pinMode(servoPin1,OUTPUT);
+  pinMode(servoPin2,OUTPUT);
+  pinMode(servoPin3,OUTPUT);
+  pinMode(servoPin4,OUTPUT);
+  pinMode(A0,INPUT);
+  pinMode(A1,INPUT);
+  pinMode(A2,INPUT);
+  pinMode(A3,INPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int reading1=analogRead(A0);
+  int reading2=analogRead(A1);
+  int reading3=analogRead(A2);
+  int reading4=analogRead(A3);
+  Serial.println(reading1);
+  Serial.println(reading2);
+  Serial.println(reading3);
+  Serial.println(reading4);
+  if(reading1>=430){
+    servo11(16);
+  }
+  else{
+    servo11(31);
+  }
+  if(reading2>=430){
+    servo22(16);
+  }
+  else{
+    servo22(28);
+  }
+  if(reading3>=430){
+    servo33(16);
+  }
+  else{
+    servo33(21);
+  }
+  if(reading4>=430){
+    servo44(16);
+  }
+  else{
+    servo44(31);
+  
+}
+}
+void servo11(int angle1){
+  for(int i=15;i<=angle1;i++){
+    int pulsewidth1=(angle1*11)+500;
+    digitalWrite(servoPin1,HIGH);
+    delayMicroseconds(pulsewidth1);
+    digitalWrite(servoPin1,LOW);
+    delayMicroseconds(20000-pulsewidth1);
+  }
+}
+void servo22(int angle2){
+  for(int i=15;i<=angle2;i++){
+    int pulsewidth2=(angle2*11)+500;
+    digitalWrite(servoPin2,HIGH);
+    delayMicroseconds(pulsewidth2);
+    digitalWrite(servoPin2,LOW);
+    delayMicroseconds(20000-pulsewidth2);
+  }
+}
+void servo33(int angle3){
+  for(int i=15;i<=angle3;i++){
+    int pulsewidth3=(angle3*11)+500;
+    digitalWrite(servoPin3,HIGH);
+    delayMicroseconds(pulsewidth3);
+    digitalWrite(servoPin3,LOW);
+    delayMicroseconds(20000-pulsewidth3);
+  }
+}
+void servo44(int angle4){
+  for(int i=15;i<=angle4;i++){
+    int pulsewidth4=(angle4*11)+500;
+    digitalWrite(servoPin4,HIGH);
+    delayMicroseconds(pulsewidth4);
+    digitalWrite(servoPin4,LOW);
+    delayMicroseconds(20000-pulsewidth4);
+  }
+}
